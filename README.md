@@ -35,7 +35,7 @@ Follow these steps to set up and use the **Blog-Factory**:
 
 ### 1. Create a New Repository
 
-- Navigate to the **Blog-Factory** repository.
+- Navigate to the top of **Blog-Factory** repository.
 - Click the "Use this template" button to create a new repository based on this template.
 
 ### 2. Deploy with Netlify
