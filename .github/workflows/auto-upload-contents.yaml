@@ -1,0 +1,46 @@
+name: Auto Upload Contents
+
+on:
+  workflow_dispatch:
+    inputs:
+      n_content:
+        description: "Number of posts to generate and upload"
+        required: true
+        default: "1"
+      topic:
+        description: "Topic for content generation"
+        required: true
+        default: "Free Topic"
+      enable_langchain_tracing:
+        description: "Enable LangChain tracing (true/false)"
+        required: false
+        default: "false"
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Generate content
+        run: yarn generate-content --n-content ${{ github.event.inputs.n_content }} --topic "${{ github.event.inputs.topic }}"
+        env:
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          LANGCHAIN_TRACING_V2: ${{ github.event.inputs.enable_langchain_tracing }}
+          LANGCHAIN_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
+
+      - name: Commit and push if changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 Add generated content for ${{ github.event.inputs.topic }}" --no-verify && git push)
