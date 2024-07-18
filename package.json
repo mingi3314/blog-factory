@@ -20,7 +20,8 @@
     "lint-staged": "lint-staged",
     "pre-commit": "yarn lint-staged",
     "postinstall": "husky install",
-    "generate-content": "ts-node scripts/generate-content.ts"
+    "generate-content": "ts-node scripts/generate-content.ts",
+    "initialize-images": "ts-node scripts/initialize-images.ts"
   },
   "dependencies": {
     "@langchain/mistralai": "^0.0.25",
