@@ -31,8 +31,32 @@ const FamilyDropdown: React.FC = () => {
       <DropdownButton onClick={toggleDropdown}>Family Sites</DropdownButton>
       {isOpen && (
         <DropdownMenu>
-          <DropdownItem href="https://alphasquare.co.kr/home">
-            AlphaSquare
+          <DropdownItem href="https://stock-trend-follower.netlify.app/">
+            stock-trend-follower
+          </DropdownItem>
+          <DropdownItem href="https://shushung.netlify.app/">
+            shushung
+          </DropdownItem>
+          <DropdownItem href="https://smile-life.netlify.app/">
+            smile-life
+          </DropdownItem>
+          <DropdownItem href="https://midasengine.netlify.app/">
+            midasengine
+          </DropdownItem>
+          <DropdownItem href="https://geum-yung-galadium.netlify.app/">
+            geum-yung-galadium
+          </DropdownItem>
+          <DropdownItem href="https://moneyhabits.netlify.app/">
+            moneyhabits
+          </DropdownItem>
+          <DropdownItem href="https://vintage-vibes-blog.netlify.app/">
+            vintage-vibes-blog
+          </DropdownItem>
+          <DropdownItem href="https://blog-stream.netlify.app/">
+            blog-stream
+          </DropdownItem>
+          <DropdownItem href="https://green-living-blog.netlify.app/">
+            green-living-blog
           </DropdownItem>
         </DropdownMenu>
       )}

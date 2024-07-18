@@ -18,7 +18,7 @@ jobs:
         run: yarn install
 
       - name: Initialize images
-        run: yarn initialize-images"
+        run: yarn initialize-images
 
       - name: Commit and push if changes
         run: |
