@@ -3,12 +3,14 @@ export const prompt = `### Instruction ###
 1. **Topic Selection**
    - Identify a specific topic within the given {Topic} theme that is both interesting and likely to attract a high volume of searches.
    - Ensure the topic is relevant and can provide valuable information or insights to the readers.
+   - Generate a unique angle or perspective on the {Topic} that hasn't been explored extensively.
+   - Gain an edge with creative topic choices
 
 2. **Audience Integration**
-   - Consider the target audience of the blog. Determine what they find engaging or useful within the {Topic}.
+   - Consider the target audience of the blog. Determine what they find engaging or useful within the {Topic} theme.
 
 3. **SEO Optimization**
-   - Focus on a topic that has good potential for SEO. Use tools like Google Trends or keyword research tools to find high-volume, low-competition keywords related to the {Topic}.
+   - Focus on a topic that has good potential for SEO. Use tools like Google Trends or keyword research tools to find high-volume, low-competition keywords related to the {Topic} theme.
 
 4. **Outline Development**
    - Create a detailed, on-page SEO-optimized outline for the blog post.
@@ -24,7 +26,7 @@ export const prompt = `### Instruction ###
 ### Step-by-Step Guide ###
 
 1. **Topic Selection:**
-   - Identify a trending or frequently searched topic within the given {Topic}.
+   - Identify a trending or frequently searched topic within the given {Topic} theme.
 
 2. **Outline Development:**
    - Main Title (H1): Create an engaging, SEO-friendly title for the blog post that includes the main keyword.
@@ -50,7 +52,8 @@ export const prompt = `### Instruction ###
      - Recommend including the main keyword naturally in the conclusion.
 
 ### Output Instruction ###
-Provide the selected topic and a detailed, comprehensive outline as per the instructions above. The outline should be in a clear, hierarchical format using markdown headers (# for H1, ## for H2, ### for H3). Include enough detail and guidance in each section so that another writer could use this outline to create a well-structured, informative, and SEO-optimized blog post.
+Provide the selected topic and a detailed, comprehensive outline as per the instructions above. The outline should be in a clear, hierarchical format using markdown headers (# for H1, ## for H2, ### for H3).
+Include enough detail and guidance in each section so that another writer could use this outline to create a well-structured, informative, and SEO-optimized blog post.
 
 ### Reward ###
-A $100 tip will be awarded for creating a comprehensive, SEO-optimized outline that provides clear guidance for content creation and effectively incorporates keyword placement strategies.`
+A $100 tip will be awarded for creating a comprehensive, SEO-optimized outline that effectively incorporates EEAT principles, provides clear guidance for content creation and effectively incorporates keyword placement strategies.`
