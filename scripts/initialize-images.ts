@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/prefer-top-level-await */
 
+import crypto from "node:crypto"
 import fs from "node:fs"
 import path from "node:path"
 
@@ -29,8 +30,9 @@ async function main() {
   const logoPath = path.join("src", "images", "icon.png")
   const thumbnailPath = path.join("src", "images", "og-thumbnail.png")
 
+  const randomSeed = crypto.randomBytes(16).toString("hex")
   // 로고 및 썸네일 생성
-  await generateRandomLogo("bloglogo123", logoPath)
+  await generateRandomLogo(randomSeed, logoPath)
   await generateRandomThumbnail(1200, 800, thumbnailPath)
 }
 
