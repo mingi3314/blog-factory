@@ -2,6 +2,18 @@ import React, { useEffect, useRef, useState } from "react"
 
 import styled from "styled-components"
 
+interface FamilySite {
+  name: string
+  url: string
+}
+
+const familySites: FamilySite[] = [
+  { name: "vintage-vibes-blog", url: "https://vintage-vibes-blog.netlify.app/" },
+  { name: "blog-stream", url: "https://blog-stream.netlify.app/" },
+  { name: "green-living-blog", url: "https://green-living-blog.netlify.app/" },
+  // Add more family sites here
+]
+
 const FamilyDropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -28,38 +40,16 @@ const FamilyDropdown: React.FC = () => {
 
   return (
     <DropdownContainer ref={dropdownRef}>
-      <DropdownButton onClick={toggleDropdown}>Family Sites</DropdownButton>
-      {isOpen && (
-        <DropdownMenu>
-          <DropdownItem href="https://stock-trend-follower.netlify.app/">
-            stock-trend-follower
+      <DropdownButton onClick={toggleDropdown} aria-expanded={isOpen}>
+        Example Blogs
+      </DropdownButton>
+      <DropdownMenu aria-hidden={!isOpen} $isOpen={isOpen}>
+        {familySites.map(site => (
+          <DropdownItem key={site.url} href={site.url}>
+            {site.name}
           </DropdownItem>
-          <DropdownItem href="https://shushung.netlify.app/">
-            shushung
-          </DropdownItem>
-          <DropdownItem href="https://smile-life.netlify.app/">
-            smile-life
-          </DropdownItem>
-          <DropdownItem href="https://midasengine.netlify.app/">
-            midasengine
-          </DropdownItem>
-          <DropdownItem href="https://geum-yung-galadium.netlify.app/">
-            geum-yung-galadium
-          </DropdownItem>
-          <DropdownItem href="https://moneyhabits.netlify.app/">
-            moneyhabits
-          </DropdownItem>
-          <DropdownItem href="https://vintage-vibes-blog.netlify.app/">
-            vintage-vibes-blog
-          </DropdownItem>
-          <DropdownItem href="https://blog-stream.netlify.app/">
-            blog-stream
-          </DropdownItem>
-          <DropdownItem href="https://green-living-blog.netlify.app/">
-            green-living-blog
-          </DropdownItem>
-        </DropdownMenu>
-      )}
+        ))}
+      </DropdownMenu>
     </DropdownContainer>
   )
 }
@@ -80,15 +70,20 @@ const DropdownButton = styled.button`
   }
 `
 
-const DropdownMenu = styled.div`
+const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 100%; /* 부모 요소의 아래에서 100% 위로 위치 */
+  bottom: 100%;
   background-color: var(--color-post-background);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   min-width: 160px;
+  visibility: ${props => (props.$isOpen ? "visible" : "hidden")};
+  opacity: ${props => (props.$isOpen ? 1 : 0)};
+  transition:
+    visibility 0s,
+    opacity 0.2s linear;
 `
 
 const DropdownItem = styled.a`
