@@ -1,4 +1,4 @@
-export const prompt = `### Instruction ###
+prompt = """### Instruction ###
 
 1. **Meta Title Creation**
    - Create a compelling and SEO-friendly meta title based on the blog post outline.
@@ -44,4 +44,4 @@ export const prompt = `### Instruction ###
 - Adhere to the character limits specified in the instructions.
 
 ### Reward ###
-A $50 tip will be awarded for creating compelling, SEO-friendly meta title and description that accurately represent the blog post content and encourage click-throughs from search results.`
+A $50 tip will be awarded for creating compelling, SEO-friendly meta title and description that accurately represent the blog post content and encourage click-throughs from search results."""

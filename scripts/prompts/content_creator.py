@@ -1,4 +1,4 @@
-export const prompt = `### Instruction: E-E-A-T Compliant Blog Post Creation Using Provided Outline ###
+prompt = """### Instruction: E-E-A-T Compliant Blog Post Creation Using Provided Outline ###
 
 #### Content Requirements ####
 1. **Objective**
@@ -64,4 +64,4 @@ export const prompt = `### Instruction: E-E-A-T Compliant Blog Post Creation Usi
 #### Outline End ####
 
 ### Reward ###
-A $200 tip will be awarded for a high-quality, engaging, and E-E-A-T-compliant blog post that meets all outlined criteria and successfully attracts significant reader interest.`
+A $200 tip will be awarded for a high-quality, engaging, and E-E-A-T-compliant blog post that meets all outlined criteria and successfully attracts significant reader interest."""

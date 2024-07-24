@@ -1,4 +1,4 @@
-export const prompt = `### Instruction: SEO-Optimized and Unique Blog Outline Creation ###
+prompt = """### Instruction: SEO-Optimized and Unique Blog Outline Creation ###
 
 #### Topic Selection ####
 1. **Identify a Unique Topic**
@@ -52,4 +52,4 @@ export const prompt = `### Instruction: SEO-Optimized and Unique Blog Outline Cr
 Provide a detailed, SEO-optimized outline in markdown format. The outline should include specific guidance for each section, ensuring it's comprehensive enough for another writer to create a well-structured, informative blog post. 
 
 ### Reward ###
-A $100 tip will be awarded for an exceptional, SEO-optimized outline that aligns with E-E-A-T principles, provides clear guidance for content creation, and effectively incorporates keyword placement strategies while emphasizing a unique topic approach.`
+A $100 tip will be awarded for an exceptional, SEO-optimized outline that aligns with E-E-A-T principles, provides clear guidance for content creation, and effectively incorporates keyword placement strategies while emphasizing a unique topic approach."""

@@ -19,12 +19,9 @@
     "semantic-release": "semantic-release",
     "lint-staged": "lint-staged",
     "pre-commit": "yarn lint-staged",
-    "postinstall": "husky install",
-    "generate-content": "ts-node scripts/generate-content.ts",
-    "initialize-images": "ts-node scripts/initialize-images.ts"
+    "postinstall": "husky install"
   },
   "dependencies": {
-    "@langchain/mistralai": "^0.0.25",
     "dark-github-theme": "https://github.com/remorses/dark-github-theme.git#commit=3dde125a391f5557fcc42e0d95899750df4370bf",
     "dotenv": "^16.4.5",
     "gatsby": "^5.12.12",
@@ -45,7 +42,6 @@
     "gatsby-source-filesystem": "^5.12.1",
     "gatsby-transformer-remark": "^6.12.3",
     "gatsby-transformer-sharp": "^5.12.3",
-    "langchain": "^0.2.9",
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.23",
     "react-use-fusejs": "^2.0.2",
@@ -54,9 +50,6 @@
     "typography": "^0.16.24",
     "vscode-theme-github-light": "https://github.com/yunlingz/vscode-theme-github-light.git#commit=38174065a9e6c8d93a20fab5fe7c7641c07aeca7",
     "yargs": "^17.7.2"
-  },
-  "resolutions": {
-    "@langchain/core": "0.2.15"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
