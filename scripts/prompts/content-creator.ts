@@ -1,39 +1,67 @@
-export const prompt = `### Instruction ###
+export const prompt = `### Instruction: E-E-A-T Compliant Blog Post Creation Using Provided Outline ###
 
-1. **Content Creation**
-   - Write a blog post based on the provided outline.
-   - The post should be informative, engaging, and between 1000 to 1800 words.
-   - Maintain a natural and conversational tone.
-   - Ensure the content is well-researched, accurate, and free of bias.
+#### Content Requirements ####
+1. **Objective**
+   - Write an informative and engaging blog post based on the provided outline. The content should be well-researched, accurate, and unbiased.
+   - The post should demonstrate high levels of Experience, Expertise, Authoritativeness, and Trustworthiness (E-E-A-T).
+   - Aim for a word count between 1000 to 1800 words.
 
-### Step-by-Step Guide ###
+2. **Content Guidelines**
+   - Follow the provided outline closely, ensuring each section is well-developed and provides comprehensive coverage of the topic.
+   - Add depth and detail to each section, including relevant examples, case studies, and practical tips where applicable.
+   - Maintain a natural and conversational tone to make the content accessible and engaging for readers.
 
-1. **Content Creation:**
-   - Follow the provided outline closely, expanding on each point with detailed information.
-   - Write each section in detail, ensuring clarity and coherence.
-   - Use SEO best practices, such as incorporating keywords naturally and using internal and external links. If you use external links, ensure they are from reputable sources. Avoid overlinking and ensure the links really exist.
-   - Keep the content within the 1000 to 1800-word range.
-   - Construct the content in markdown format with the following header structure:
-     - MUST Use a single # sign for the main title
-     - MUST Use ## sign for main section headers
-     - MUST Use ### sign for subsection headers
-   - Do not use more than three # symbols for any header.
+#### E-E-A-T Guidelines ####
+1. **Experience**
+   - Share personal experiences or case studies relevant to the topic to enhance the content's depth.
+   - Provide practical examples, tips, or insights that demonstrate real-world application.
+
+2. **Expertise**
+   - Use authoritative sources to back up claims and provide detailed explanations of complex topics.
+   - Highlight the writer's credentials, qualifications, or relevant experience in the subject matter.
+   - If exists, Include citations and references to reputable studies, articles, or experts to support the content.
+
+3. **Authoritativeness**
+   - Ensure the content reflects comprehensive knowledge of the topic.
+   - Use a confident tone and precise language to convey authority.
+   - If linking to external sources, ensure the links are to real and reputable websites. Verify that all external links are accurate and relevant.
+
+4. **Trustworthiness**
+   - Maintain a transparent and honest tone, disclosing any potential conflicts of interest.
+   - Ensure the information is up-to-date and fact-checked.
+   - Use secure and reliable sources for external links and data references.
+
+#### Writing and Formatting Guidelines ####
+1. **Structure and Clarity**
+   - Follow the provided outline closely, elaborating on each point with detailed information.
+   - Use clear, coherent language and ensure a logical flow between sections.
+   - Develop each section thoroughly, providing clear explanations, relevant examples, and practical insights.
+   - Construct the blog post in markdown format:
+     - Use '#' for the main title.
+     - Use '##' for main section headers.
+     - Use '###' for subsection headers.
+
+2. **SEO Optimization**
+   - Naturally incorporate the main keyword and related keywords throughout the post as indicated in the outline.
+   - Place the main keyword in the title, introduction, and at the beginning of key sections. Avoid keyword stuffing and ensure the content reads naturally.
+   - If suggesting external links, ensure they are to reputable and existing URLs.
+
+3. **Style and Tone**
+   - Write in a clear, professional, yet engaging style that resonates with the target audience.
+   - Avoid jargon or overly technical language unless necessary, and provide explanations for complex terms.
+   - Use unpredictable and highly perplexing American English style to add a unique touch. It should deviate from typical AI-generated text patterns, showcasing high lexical diversity and burstiness.
+
+#### Output Format ####
+- Provide the complete blog post content based on the given outline. The content should be in markdown format with appropriate headers and subheaders.
+- Stays within the 1000 to 1800-word range.
 
 ### Input ###
+**Outline including writing guidances:** 
+#### Outline Start ####
 
-**Outline** :
 {Outline}
 
-### Output Instruction ###
-Provide the full blog post content based on the given outline. The content should be in markdown format with appropriate headers and subheaders as specified in the instructions.
-Ensure that the final post is comprehensive, engaging, and aligns closely with the provided outline.
-Keep the content within the 1000 to 1800-word range.
-
-you MUST use the following header structure:
-- Use a single # for the main title
-- Use ## for main section headers
-- Use ### for subsection headers
-- Do not use more than three # symbols for any header.
+#### Outline End ####
 
 ### Reward ###
-A $200 tip will be awarded for writing a high-quality, engaging, and SEO-optimized blog post that meets the outlined criteria and attracts significant reader interest.`
+A $200 tip will be awarded for a high-quality, engaging, and E-E-A-T-compliant blog post that meets all outlined criteria and successfully attracts significant reader interest.`

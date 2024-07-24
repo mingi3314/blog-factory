@@ -1,59 +1,55 @@
-export const prompt = `### Instruction ###
+export const prompt = `### Instruction: SEO-Optimized and Unique Blog Outline Creation ###
 
-1. **Topic Selection**
-   - Identify a specific topic within the given {Topic} theme that is both interesting and likely to attract a high volume of searches.
-   - Ensure the topic is relevant and can provide valuable information or insights to the readers.
-   - Generate a unique angle or perspective on the {Topic} that hasn't been explored extensively.
-   - Gain an edge with creative topic choices
+#### Topic Selection ####
+1. **Identify a Unique Topic**
+   - Select a specific and unique topic within the given {Topic} theme. The topic should not only be intriguing but also offer a fresh perspective that sets it apart from commonly covered subjects.
+   - Ensure the topic is relevant, timely, and provides valuable insights or information to the readers.
+   - Prioritize originality and creativity in the topic choice to avoid repetition of existing content.
 
-2. **Audience Integration**
-   - Consider the target audience of the blog. Determine what they find engaging or useful within the {Topic} theme.
+2. **Audience Consideration**
+   - Consider the target audience's preferences and needs. Determine what aspects of the {Topic} theme they find most engaging or useful.
+   - Tailor the topic and outline to the interests and knowledge level of the intended audience, ensuring it adds unique value.
 
-3. **SEO Optimization**
-   - Focus on a topic that has good potential for SEO. Use tools like Google Trends or keyword research tools to find high-volume, low-competition keywords related to the {Topic} theme.
+#### SEO Optimization ####
+1. **Keyword Research**
+   - Utilize SEO tools like Google Trends, SEMrush, or keyword planners to identify keywords related to the {Topic} theme.
+   - While considering search volume, focus on finding low-competition or long-tail keywords that align with the unique angle of the topic.
+   - Ensure that the selected keywords do not lead to content that is overly saturated or similar to existing articles.
 
-4. **Outline Development**
-   - Create a detailed, on-page SEO-optimized outline for the blog post.
-   - Include relevant headers and subheaders (H1, H2, H3) to structure the content effectively.
-   - Ensure the outline covers all necessary sections to provide comprehensive coverage of the topic.
-   - Make the outline detailed enough that another writer could use it to create a high-quality blog post.
+2. **Outline Development**
+   - Create a detailed, SEO-optimized outline structured with appropriate headers and subheaders (H1, H2, H3).
+   - The outline should be comprehensive enough to guide the creation of a high-quality blog post, covering all necessary sections.
 
-5. **Keyword Placement**
-   - Provide guidance on keyword density and placement within the outline.
-   - Suggest including the main keyword in the title, first paragraph, and at the beginning of key sections.
-   - Recommend using related keywords or synonyms throughout the outline to avoid keyword stuffing.
+#### Detailed Outline Structure ####
+1. **Main Title (H1)**
+   - Craft an engaging, SEO-friendly title that includes the main keyword and highlights the unique angle of the topic.
 
-### Step-by-Step Guide ###
+2. **Introduction**
+   - Provide a brief overview of the topic, its relevance, and why it offers a unique perspective.
+   - Include a hook to grab attention and mention the main points to be covered.
+   - Ensure the main keyword is naturally integrated into the first paragraph.
 
-1. **Topic Selection:**
-   - Identify a trending or frequently searched topic within the given {Topic} theme.
+3. **Main Sections (H2)**
+   - Break down the main aspects or angles of the topic into 3-5 sections.
+   - Each section should focus on a specific subtopic, providing key points, facts, or examples.
+   - Suggest where to include the main and related keywords to optimize for SEO without making the content repetitive.
 
-2. **Outline Development:**
-   - Main Title (H1): Create an engaging, SEO-friendly title for the blog post that includes the main keyword.
-   - Introduction
-     - Briefly introduce the topic and its relevance.
-     - Include a hook to capture reader interest.
-     - Mention the main points that will be covered in the post.
-     - Ensure the main keyword is naturally included in the first paragraph.
-   - Main Sections (3-5 sections based on the topic, use H2)
-     - Break down the main points or aspects of the topic.
-     - Each section should cover a specific subtopic or angle.
-     - Include key points, facts, or examples to be discussed under each section.
-     - Suggest placement of main and related keywords in these sections.
-   - Subsections (use H3 where necessary)
-     - Further break down complex topics into more manageable parts.
-     - Provide guidance on specific details to be included.
-   - Additional Information
-     - Include any extra information that adds value, such as tips, case studies, or expert opinions.
-     - Suggest areas where statistics or external references could be included.
-   - Conclusion
-     - Summarize the key points covered in the post.
-     - Provide a closing thought or call-to-action.
-     - Recommend including the main keyword naturally in the conclusion.
+4. **Subsections (H3)**
+   - Further divide complex topics or sections into manageable parts.
+   - Offer guidance on specific details, case studies, or expert opinions to include.
+
+5. **Additional Information**
+   - Include areas for extra content such as tips, statistics, case studies, or expert insights.
+   - Recommend places for incorporating external references or credible sources, ensuring they are from reliable and up-to-date sites.
+
+6. **Conclusion**
+   - Summarize the key takeaways from the post.
+   - Provide a strong closing thought or call-to-action, reinforcing the main message.
+   - Naturally include the main keyword in the conclusion.
+
 
 ### Output Instruction ###
-Provide the selected topic and a detailed, comprehensive outline as per the instructions above. The outline should be in a clear, hierarchical format using markdown headers (# for H1, ## for H2, ### for H3).
-Include enough detail and guidance in each section so that another writer could use this outline to create a well-structured, informative, and SEO-optimized blog post.
+Provide a detailed, SEO-optimized outline in markdown format. The outline should include specific guidance for each section, ensuring it's comprehensive enough for another writer to create a well-structured, informative blog post. 
 
 ### Reward ###
-A $100 tip will be awarded for creating a comprehensive, SEO-optimized outline that effectively incorporates EEAT principles, provides clear guidance for content creation and effectively incorporates keyword placement strategies.`
+A $100 tip will be awarded for an exceptional, SEO-optimized outline that aligns with E-E-A-T principles, provides clear guidance for content creation, and effectively incorporates keyword placement strategies while emphasizing a unique topic approach.`

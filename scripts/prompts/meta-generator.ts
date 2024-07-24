@@ -29,14 +29,19 @@ export const prompt = `### Instruction ###
    - Ensure the description is between 130-160 characters.
 
 ### Input ###
+**Outline:** 
+#### Outline Start ####
+
 {Outline}
 
-### Output Instruction ###
-Provide a meta title and meta description based on the given outline.
-Respond only in valid JSON format. The JSON object you return should match the following schema:
-{{ meta: {{ title: "string", description: "string" }} }}
+#### Outline End ####
 
-Ensure that both the title and description adhere to the character limits specified in the instructions.
+### Output Instruction ###
+- Provide a meta title and meta description based on the given outline.
+- Respond only in valid JSON format. The JSON object you return should match the following schema:
+   {{ meta: {{ title: "string", description: "string" }} }}
+
+- Adhere to the character limits specified in the instructions.
 
 ### Reward ###
 A $50 tip will be awarded for creating compelling, SEO-friendly meta title and description that accurately represent the blog post content and encourage click-throughs from search results.`
