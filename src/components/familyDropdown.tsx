@@ -8,9 +8,7 @@ interface FamilySite {
 }
 
 const familySites: FamilySite[] = [
-  { name: "vintage-vibes-blog", url: "https://vintage-vibes-blog.netlify.app/" },
-  { name: "blog-stream", url: "https://blog-stream.netlify.app/" },
-  { name: "green-living-blog", url: "https://green-living-blog.netlify.app/" },
+  { name: "blog-factory", url: "https://blog-stream.netlify.app/" },
   // Add more family sites here
 ]
 
@@ -41,7 +39,7 @@ const FamilyDropdown: React.FC = () => {
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={toggleDropdown} aria-expanded={isOpen}>
-        Example Blogs
+        Origin
       </DropdownButton>
       <DropdownMenu aria-hidden={!isOpen} $isOpen={isOpen}>
         {familySites.map(site => (
