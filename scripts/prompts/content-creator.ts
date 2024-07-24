@@ -11,7 +11,7 @@ export const prompt = `### Instruction ###
 1. **Content Creation:**
    - Follow the provided outline closely, expanding on each point with detailed information.
    - Write each section in detail, ensuring clarity and coherence.
-   - Use SEO best practices, such as incorporating keywords naturally and using internal and external links.
+   - Use SEO best practices, such as incorporating keywords naturally and using internal and external links. If you use external links, ensure they are from reputable sources. Avoid overlinking and ensure the links really exist.
    - Keep the content within the 1000 to 1800-word range.
    - Construct the content in markdown format with the following header structure:
      - MUST Use a single # sign for the main title
@@ -20,10 +20,15 @@ export const prompt = `### Instruction ###
    - Do not use more than three # symbols for any header.
 
 ### Input ###
+
+**Outline** :
 {Outline}
 
 ### Output Instruction ###
-Provide the full blog post content based on the given outline. The content should be in markdown format with appropriate headers and subheaders as specified in the instructions. Ensure that the final post is comprehensive, engaging, and aligns closely with the provided outline.
+Provide the full blog post content based on the given outline. The content should be in markdown format with appropriate headers and subheaders as specified in the instructions.
+Ensure that the final post is comprehensive, engaging, and aligns closely with the provided outline.
+Keep the content within the 1000 to 1800-word range.
+
 you MUST use the following header structure:
 - Use a single # for the main title
 - Use ## for main section headers
