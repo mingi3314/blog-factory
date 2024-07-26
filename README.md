@@ -7,11 +7,12 @@ Welcome to the **Blog-Factory** repository, a powerful and automated AI-driven p
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [1. Create a New Repository](#1-create-a-new-repository)
-  - [2. Deploy with Netlify](#2-deploy-with-netlify)
-  - [3. Modify Configuration](#3-modify-configuration)
-  - [4. Update GitHub Repository Settings](#4-update-github-repository-settings)
+  - [2. Modify Configuration](#2-modify-configuration)
+  - [3. Update GitHub Repository Settings](#3-update-github-repository-settings)
+  - [4. Initialize Images](#4-initialize-images)
   - [5. Generate Content](#5-generate-content)
-  - [6. Register with Google Search Console](#6-register-with-google-search-console)
+  - [6. Deploy with Netlify](#6-deploy-with-netlify)
+  - [7. Register with Google Search Console](#7-register-with-google-search-console)
 - [Usage](#usage)
 - [Contribution](#contribution)
 
@@ -28,6 +29,8 @@ Welcome to the **Blog-Factory** repository, a powerful and automated AI-driven p
   - Automatic thumbnail creation for each article.
   - Automatic sitemap generation.
 - **Easy Deployment**: Utilizes Netlify for deploying blogs with high Domain Rank, ensuring better visibility and reach.
+- **Automated Image Generation**: Capability to generate a logo and thumbnails for your blog automatically.
+- **Scheduled Posting**: Option to enable automatic, scheduled content generation and posting.
 
 ## Getting Started
 
@@ -38,41 +41,7 @@ Follow these steps to set up and use the **Blog-Factory**:
 - Navigate to the top of **Blog-Factory** repository.
 - Click the "Use this template" button to create a new repository based on this template.
 
-### 2. Deploy with Netlify
-
-Deploying your blog with Netlify is a straightforward process that ensures your content is live and accessible on the web with high DR(Domain Rating). Here’s how to get your site up and running:
-
-#### Step-by-Step Deployment Guide
-
-1. **Start the Deployment Process**:
-
-   - Visit [Netlify](https://app.netlify.com/start) to begin.
-   - Click on the "New site from Git" button on the Netlify dashboard. This starts the process to connect your GitHub repository to Netlify.
-
-2. **Connect to GitHub**:
-
-   - Choose "GitHub" as the platform under the section "Let’s deploy your project with…". This allows Netlify to access your repositories.
-   - You'll be prompted to authorize Netlify to access your GitHub account. Follow the prompts to allow the necessary permissions.
-
-3. **Select Your Repository**:
-
-   - Once connected, you’ll see a list of your GitHub repositories. Select the repository you created from the **Blog-Factory** template.
-
-4. **Configure Your Site**:
-   - **Site Name**: Assign a custom name to your site under the "Site settings" option. This name will be part of your blog's URL (e.g., your-custom-name.netlify.app).
-   - **Build Settings**: Netlify automatically detects the necessary build settings from your repository.
-5. **Deploy Your Site**:
-   - Click the "Deploy site" button. Netlify will begin the process of building and deploying your site.
-   - This process might take a few minutes. Once done, Netlify will provide you with a URL where your deployed site is accessible.
-
-#### Monitoring Deployment
-
-- **Netlify Dashboard**: After deployment, you can monitor the status and manage your site directly from the Netlify dashboard.
-- **Continuous Deployment**: Any future changes pushed to your GitHub repository will automatically trigger a new build and deployment, ensuring your blog is always up-to-date.
-
-By following these steps, your blog will be live and accessible through Netlify, benefiting from its robust CDN, automatic SSL, and more, ensuring a smooth and secure user experience.
-
-### 3. Modify Configuration
+### 2. Modify Configuration
 
 Configuring your site correctly is essential to ensure it reflects your brand and functions as expected. This step involves updating the `gatsby-meta-config.js` file in your repository to tailor the metadata for your blog. Follow these detailed instructions to update your configuration effectively:
 
@@ -128,13 +97,19 @@ const metaConfig = {
    author: "Your Name or Organization",
    ```
 
-4. **Site URL**: Change the `siteUrl` to match the URL provided by Netlify after deploying your site.
+4. **Site URL**: Set the siteUrl to your intended domain name. This should be the URL you plan to use on Netlify.
 
    Example:
 
    ```javascript
    siteUrl: "https://your-custom-name.netlify.app",
    ```
+
+   **Important Notes**:
+
+   - Before finalizing this URL, check if it's available on Netlify by attempting to access it in your browser. If it's already in use, you'll need to choose a different URL.
+   - Make sure to use the same URL when deploying your site on Netlify later. This ensures consistency between your configuration and the actual deployed site.
+   - If you need to change this URL later, remember to update it both in this configuration file and on Netlify to keep everything synchronized.
 
 5. **Language**: Adjust the `lang` attribute if necessary, to specify the primary language of your site's content.
 
@@ -158,13 +133,13 @@ const metaConfig = {
 
 By carefully updating these settings, you'll enhance your blog's identity and ensure it operates smoothly with accurate metadata. This step is crucial for establishing a professional presence and optimizing your site's performance across search engines and social platforms.
 
-### 4. Update GitHub Repository Settings
+### 3. Update GitHub Repository Settings
 
-To ensure the smooth operation of your blog's automated content generation and deployment, updating your GitHub repository settings is crucial. Here's how to configure environment variables and adjust workflow permissions.
+To ensure the smooth operation of your blog's automated content generation and deployment, updating your GitHub repository settings is crucial. Here's how to configure environment variables, adjust workflow permissions, and set up scheduled posting.
 
 #### Setting Up Environment Variables
 
-Environment variables are used to securely store API keys needed for content generation and optional debugging. Here’s how to obtain and set these up:
+Environment variables are used to securely store API keys needed for content generation and optional debugging. Here's how to obtain and set these up:
 
 1. **MISTRAL_API_KEY**
    - **Purpose**: Used for generating content using the `open-mistral-8x7b` model via Langchain.
@@ -201,17 +176,50 @@ To commit generated content back to the main branch, the GitHub Actions workflow
 - **Confirm Changes**:
   - Save your changes to ensure that GitHub Actions can commit changes to your repository.
 
-By properly setting up your environment variables and workflow permissions, you ensure that your automated blog content generation and deployment processes run smoothly and securely. This setup not only optimizes your blog's operation but also safeguards your API keys and critical operations.
+#### Setting Up Scheduled Posting
+
+To enable automatic, scheduled content generation and posting, you need to configure additional repository variables:
+
+1. **ENABLE_SCHEDULED_POSTING**
+   - Set this to `true` to enable scheduled posting.
+2. **SCHEDULED_POST_COUNT**
+   - Specify the number of posts to generate in each scheduled run.
+3. **SCHEDULED_POST_TOPIC**
+   - Define the topic or theme for the scheduled posts.
+
+To set these variables:
+
+- Go to `Settings` > `Secrets and variables` > `Actions`.
+- Click on `New repository variable` for each of the above.
+- Enter the variable name and its value, then save.
+
+By properly setting up your environment variables, workflow permissions, and scheduled posting configuration, you ensure that your automated blog content generation and deployment processes run smoothly and securely. This setup not only optimizes your blog's operation but also safeguards your API keys and critical operations while allowing for regular, automated content updates.
+
+### 4. Initialize Images
+
+Blog-Factory provides an automated way to generate a logo and thumbnails for your blog. This feature can be accessed through the GitHub Actions workflow.
+
+To initialize images for your blog:
+
+1. Navigate to the "Actions" tab in your GitHub repository.
+2. Find the "Initialize images" workflow.
+3. Click on "Run workflow".
+4. Confirm the action to start the image generation process.
+
+Once complete, the workflow will have generated and committed:
+
+- A logo for your blog
+- Default thumbnails for your blog posts
+
+These images will be automatically used in your blog's design and for new posts. You can always replace these with custom images later if desired.
 
 ### 5. Generate Content
 
-Generating new content for your blog using the **Auto Upload Contents** GitHub Action is a key feature of the Blog-Factory. This automated process not only creates content but also uploads it directly to your blog repository. Below is a detailed guide on how to use this functionality and what happens during the process.
+Blog-Factory offers two methods for generating content: manual triggering and automated scheduled posting. Both methods utilize the power of AI to create SEO-optimized blog posts on your specified topics.
 
-#### Overview of the `auto-upload-contents.yaml` Action
+#### Manual Content Generation
 
-The `auto-upload-contents.yaml` file in your repository is configured to allow manual triggering of content generation. It includes inputs for the number of posts, the topic of content, and an option to enable LangChain tracing for detailed debugging (if needed).
-
-#### How to Use the Action
+You can manually trigger content generation using the **Auto Upload Contents** GitHub Action. Here's how to use this functionality:
 
 1. **Navigate to the Actions Tab**:
 
@@ -229,7 +237,22 @@ The `auto-upload-contents.yaml` file in your repository is configured to allow m
 3. **Start the Generation**:
    - Click the "Run workflow" button to start the content generation process.
 
-#### What Happens After Triggering the Action
+#### Automated Scheduled Posting
+
+If you've enabled automated scheduled posting in your repository settings, Blog-Factory will automatically generate and post content on a regular basis. Here's how it works:
+
+1. **Scheduling**: The system uses the GitHub Actions scheduler to run the content generation process at predetermined intervals (e.g., daily, weekly).
+
+2. **Content Generation**: During each scheduled run, the system will:
+
+   - Generate the number of posts specified in the `SCHEDULED_POST_COUNT` variable.
+   - Use the topic defined in the `SCHEDULED_POST_TOPIC` variable for content creation.
+
+3. **Posting**: The generated content is automatically committed to your repository and, if Netlify is set up, deployed to your live blog.
+
+#### What Happens After Content Generation
+
+Regardless of whether content is generated manually or through scheduled posting:
 
 - **Content Creation**: The specified number of blog posts on the chosen topic will be generated using AI, with SEO considerations automatically integrated.
 - **Review and Deployment**: Once the content is generated and committed, it's pushed to your repository. If your repository is linked with Netlify, any new commits will trigger a deployment, updating your blog with fresh content automatically.
@@ -238,12 +261,47 @@ The `auto-upload-contents.yaml` file in your repository is configured to allow m
 
 - **Check the `src/posts/blog` directory**: After the action completes, navigate to this directory in your repository to see the new content.
 - **Review Commit History**: You can also view the commit history to see the detailed messages and changes made by the GitHub Action.
+- **Quality Control**: While the AI-generated content is designed to be high-quality and SEO-optimized, it's a good practice to review and potentially edit the posts before they go live, especially for the scheduled posts.
 
-This setup not only simplifies the management of your blog content but also ensures that your blog remains dynamic and current with minimal manual intervention.
+This setup not only simplifies the management of your blog content but also ensures that your blog remains dynamic and current with minimal manual intervention. The combination of manual and automated posting gives you flexibility in managing your content strategy while maintaining a consistent publishing schedule.
 
-### 6. Register with Google Search Console
+### 6. Deploy with Netlify
 
-Registering your blog with Google Search Console is an essential step to ensure your site is indexed properly by Google, providing insights into your site’s visibility on Google search. This process also helps in monitoring, maintaining, and troubleshooting your site's presence in Google Search results. Here’s how to get your blog registered and verified with Google Search Console.
+Deploying your blog with Netlify is a straightforward process that ensures your content is live and accessible on the web with high DR(Domain Rating). Here's how to get your site up and running:
+
+#### Step-by-Step Deployment Guide
+
+1. **Start the Deployment Process**:
+
+   - Visit [Netlify](https://app.netlify.com/start) to begin.
+   - Click on the "New site from Git" button on the Netlify dashboard. This starts the process to connect your GitHub repository to Netlify.
+
+2. **Connect to GitHub**:
+
+   - Choose "GitHub" as the platform under the section "Let's deploy your project with…". This allows Netlify to access your repositories.
+   - You'll be prompted to authorize Netlify to access your GitHub account. Follow the prompts to allow the necessary permissions.
+
+3. **Select Your Repository**:
+
+   - Once connected, you'll see a list of your GitHub repositories. Select the repository you created from the **Blog-Factory** template.
+
+4. **Configure Your Site**:
+   - **Site Name**: Assign a custom name to your site under the "Site settings" option. This name will be part of your blog's URL (e.g., your-custom-name.netlify.app).
+   - **Build Settings**: Netlify automatically detects the necessary build settings from your repository.
+5. **Deploy Your Site**:
+   - Click the "Deploy site" button. Netlify will begin the process of building and deploying your site.
+   - This process might take a few minutes. Once done, Netlify will provide you with a URL where your deployed site is accessible.
+
+#### Monitoring Deployment
+
+- **Netlify Dashboard**: After deployment, you can monitor the status and manage your site directly from the Netlify dashboard.
+- **Continuous Deployment**: Any future changes pushed to your GitHub repository will automatically trigger a new build and deployment, ensuring your blog is always up-to-date.
+
+By following these steps, your blog will be live and accessible through Netlify, benefiting from its robust CDN, automatic SSL, and more, ensuring a smooth and secure user experience.
+
+### 7. Register with Google Search Console
+
+Registering your blog with Google Search Console is an essential step to ensure your site is indexed properly by Google, providing insights into your site's visibility on Google search. This process also helps in monitoring, maintaining, and troubleshooting your site's presence in Google Search results. Here's how to get your blog registered and verified with Google Search Console.
 
 #### Steps to Register Your Blog
 
@@ -273,7 +331,7 @@ Registering your blog with Google Search Console is an essential step to ensure 
 - **Sitemap Submission**:
 
   - Submitting a sitemap is crucial for helping Google understand the structure of your site, which enhances the indexing of your pages. Since your blog automatically generates a sitemap upon deployment, you'll need to submit this to Google.
-  - Go to the 'Sitemaps' section under ‘Index’ in the Google Search Console.
+  - Go to the 'Sitemaps' section under 'Index' in the Google Search Console.
   - Submit the URL of your sitemap, which is located at `https://your-custom-name.netlify.app/sitemap-index.xml`.
 
 - **Monitor Performance**:
@@ -287,7 +345,7 @@ Registering your blog with Google Search Console is an essential step to ensure 
 
 - **Regular Checks**:
 
-  - Regularly check Google Search Console for alerts and suggestions. Keeping your site optimized for Google’s search engine is a continuous process that can yield significant benefits over time.
+  - Regularly check Google Search Console for alerts and suggestions. Keeping your site optimized for Google's search engine is a continuous process that can yield significant benefits over time.
 
 - **Utilize Tools**:
   - Take advantage of the tools provided by Google Search Console to analyze and optimize your site's performance in Google Search.
@@ -296,7 +354,14 @@ By integrating your blog with Google Search Console, you not only gain critical 
 
 ## Usage
 
-Once setup is complete, your blog is almost self-sustaining. Regularly trigger the content generation action to keep your blog updated with fresh, SEO-optimized posts. Ensure that the deployment pipeline through Netlify is active to reflect changes live on your blog.
+Once setup is complete, your blog is almost self-sustaining. You can:
+
+1. Regularly trigger the content generation action to keep your blog updated with fresh, SEO-optimized posts.
+2. Use the scheduled posting feature for automatic, regular updates.
+3. Monitor your blog's performance through Google Search Console.
+4. Make manual edits or additions to your content as needed.
+
+Ensure that the deployment pipeline through Netlify is active to reflect changes live on your blog.
 
 ## Contribution
 
