@@ -15,10 +15,13 @@ on:
         description: "Enable LangChain tracing (true/false)"
         required: false
         default: "false"
+  schedule:
+    - cron: "0 0 * * 1" # Run every Monday at 00:00 UTC
 
 jobs:
   generate-content:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.ENABLE_SCHEDULED_POSTING == 'true') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -50,7 +53,15 @@ jobs:
         run: |
           source $VENV
           export PYTHONPATH=$PYTHONPATH:${{ github.workspace }}
-          python scripts/generate_content.py --n-content ${{ github.event.inputs.n_content }} --topic "${{ github.event.inputs.topic }}"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python scripts/generate_content.py \
+              --n-content ${{ vars.SCHEDULED_POST_COUNT || 5 }} \
+              --topic "${{ vars.SCHEDULED_POST_TOPIC || 'Free Topic' }}"
+          else
+            python scripts/generate_content.py \
+              --n-content ${{ github.event.inputs.n_content }} \
+              --topic "${{ github.event.inputs.topic }}"
+          fi
         env:
           VENV: ${{ github.workspace }}/.venv/bin/activate
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
@@ -62,4 +73,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 Add generated content for ${{ github.event.inputs.topic }}" --no-verify && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 Add generated content for ${{ github.event.inputs.topic || vars.SCHEDULED_POST_TOPIC || 'Free Topic' }}" --no-verify && git push)
