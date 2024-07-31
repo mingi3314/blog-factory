@@ -2,15 +2,18 @@
 import logging
 import random
 from datetime import datetime
+from enum import StrEnum
 from pathlib import Path
-from typing import TypedDict
+from typing import Annotated, TypedDict
 
 import requests
 import typer
+from dotenv import load_dotenv
 from langchain.prompts import PromptTemplate
 from langchain_core.language_models import BaseChatModel
 from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
 from langchain_mistralai import ChatMistralAI
+from langchain_openai import ChatOpenAI
 
 # Constants moved to a separate config.py file
 from scripts.config import (
@@ -22,6 +25,8 @@ from scripts.config import (
 from scripts.prompts.content_creator import prompt as content_creator_prompt
 from scripts.prompts.meta_generator import prompt as meta_generator_prompt
 from scripts.prompts.outline_builder import prompt as outline_builder_prompt
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -129,7 +134,7 @@ def create_markdown_file(content: str, meta: Meta) -> None:
         markdown_content = f"""---
 title: {meta["meta"]["title"].replace(":", "-")}
 category: "constant"
-date: {current_date} +09:00
+date: {current_date} +00:00
 desc: {meta["meta"]["description"].replace(":", "-")}
 thumbnail: "./{relative_thumbnail_path}"
 alt: "Thumbnail for {meta["meta"]["title"]}"
@@ -156,16 +161,28 @@ def generate_single_content(model: BaseChatModel, topic: str) -> None:
         logger.error(f"Error in content generation pipeline: {e}")
 
 
+class Provider(StrEnum):
+    openai = "openai"
+    mistral = "mistral"
+
+
+def get_chat_model(provider: Provider) -> BaseChatModel:
+    match provider:
+        case Provider.openai:
+            return ChatOpenAI(model="gpt-4o-mini", temperature=0.8)
+        case Provider.mistral:
+            return ChatMistralAI(model_name="open-mixtral-8x7b", temperature=0.8)
+
+
 @app.command()
 def main(
     n_content: int = typer.Option(
         1, "--n-content", "-n", help="Number of content pieces to generate"
     ),
-    topic: str = typer.Option(
-        "stock-trading", "--topic", "-t", help="Topic for content generation"
-    ),
+    topic: str = typer.Option("free topic", "--topic", "-t", help="Topic for content generation"),
+    provider: Annotated[Provider, typer.Option(case_sensitive=False)] = Provider.mistral,
 ) -> None:
-    model = ChatMistralAI(model_name="open-mixtral-8x7b", temperature=0.8)
+    model = get_chat_model(provider)
 
     for i in range(n_content):
         logger.info(f"Generating content {i + 1} of {n_content}...")

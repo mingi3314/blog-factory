@@ -1,6 +1,7 @@
 import React from "react"
 
 import { type PageProps, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { type Article, type BreadcrumbList } from "schema-dts"
 import styled from "styled-components"
 
@@ -128,6 +129,11 @@ const BlogPost: React.FC<PageProps<DataProps>> = ({ data }) => {
   } as BreadcrumbList
 
   const jsonLds = [articleJsonLd, breadcrumbJsonLd]
+
+  const thumbnailImage = thumbnail?.childImageSharp?.gatsbyImageData
+    ? getImage(thumbnail.childImageSharp.gatsbyImageData)
+    : undefined
+
   return (
     <Layout>
       <SEO
@@ -140,6 +146,15 @@ const BlogPost: React.FC<PageProps<DataProps>> = ({ data }) => {
       <main>
         <article>
           <OuterWrapper>
+            {thumbnailImage && (
+              <ThumbnailWrapper>
+                <GatsbyImage
+                  image={thumbnailImage}
+                  alt={title || ""}
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </ThumbnailWrapper>
+            )}
             <InnerWrapper>
               <div>
                 <header>
@@ -168,6 +183,16 @@ const OuterWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     margin-top: var(--sizing-lg);
+  }
+`
+
+const ThumbnailWrapper = styled.div`
+  width: 100%;
+  height: 400px;
+  margin-bottom: var(--sizing-lg);
+
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    height: 300px;
   }
 `
 
@@ -230,7 +255,7 @@ export const query = graphql`
         desc
         thumbnail {
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, layout: FIXED)
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
         date(formatString: "YYYY-MM-DDTHH:MM:SSZ")

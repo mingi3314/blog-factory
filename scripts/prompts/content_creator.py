@@ -37,7 +37,7 @@ prompt = """### Instruction: E-E-A-T Compliant Blog Post Creation Using Provided
    - Use clear, coherent language and ensure a logical flow between sections.
    - Develop each section thoroughly, providing clear explanations, relevant examples, and practical insights.
    - Construct the blog post in markdown format:
-     - Use '#' for the main title.
+     - **Do not use H1 (#) tags** in the content; the title will automatically have an H1 tag added when published. You have a responsibility to write down the body of the blog post, not the title.
      - Use '##' for main section headers.
      - Use '###' for subsection headers.
 
@@ -50,6 +50,17 @@ prompt = """### Instruction: E-E-A-T Compliant Blog Post Creation Using Provided
    - Write in a clear, professional, yet engaging style that resonates with the target audience.
    - Avoid jargon or overly technical language unless necessary, and provide explanations for complex terms.
    - Use unpredictable and highly perplexing American English style to add a unique touch. It should deviate from typical AI-generated text patterns, showcasing high lexical diversity and burstiness.
+
+#### Self-Review Process ####
+1. **Content Quality Check**
+   - Review the content for accuracy, ensuring all facts and figures are correct and sourced from reputable sources.
+   - Verify that the post fully covers the topic as per the outline, with no significant gaps in information.
+
+2. **Final Proofreading**
+   - Conduct a thorough proofreading session to eliminate any grammatical errors, typos, or formatting issues.
+   - Confirm that the content is within the 1000 to 1800-word range.
+   - Ensure the content is well-structured, with clear headers and subheaders for each section.
+   - Ensure that there are no clues or traces of AI-generated content in the final draft.
 
 #### Output Format ####
 - Provide the complete blog post content based on the given outline. The content should be in markdown format with appropriate headers and subheaders.
