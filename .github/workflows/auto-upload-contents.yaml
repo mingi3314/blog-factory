@@ -11,6 +11,10 @@ on:
         description: "Topic for content generation"
         required: true
         default: "Free Topic"
+      provider:
+        description: "LLM provider (e.g. openai, mistral)"
+        required: true
+        default: "mistral"
       enable_langchain_tracing:
         description: "Enable LangChain tracing (true/false)"
         required: false
@@ -56,11 +60,15 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             python scripts/generate_content.py \
               --n-content ${{ vars.SCHEDULED_POST_COUNT || 5 }} \
-              --topic "${{ vars.SCHEDULED_POST_TOPIC || 'Free Topic' }}"
+              --topic "${{ vars.SCHEDULED_POST_TOPIC || 'Free Topic' }} \
+              --provider "${{ github.event.inputs.provider }}
+              "
           else
             python scripts/generate_content.py \
               --n-content ${{ github.event.inputs.n_content }} \
-              --topic "${{ github.event.inputs.topic }}"
+              --topic "${{ github.event.inputs.topic }} \
+              --provider "${{ github.event.inputs.provider }}
+              "
           fi
         env:
           VENV: ${{ github.workspace }}/.venv/bin/activate

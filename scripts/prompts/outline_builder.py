@@ -17,11 +17,11 @@ prompt = """### Instruction: SEO-Optimized and Unique Blog Outline Creation ###
    - Ensure that the selected keywords do not lead to content that is overly saturated or similar to existing articles.
 
 2. **Outline Development**
-   - Create a detailed, SEO-optimized outline structured with appropriate headers and subheaders (H1, H2, H3).
+   - Create a detailed, SEO-optimized outline structured with appropriate headers and subheaders (H2, H3).
    - The outline should be comprehensive enough to guide the creation of a high-quality blog post, covering all necessary sections.
 
 #### Detailed Outline Structure ####
-1. **Main Title (H1)**
+1. **Main Title**
    - Craft an engaging, SEO-friendly title that includes the main keyword and highlights the unique angle of the topic.
 
 2. **Introduction**
@@ -29,12 +29,12 @@ prompt = """### Instruction: SEO-Optimized and Unique Blog Outline Creation ###
    - Include a hook to grab attention and mention the main points to be covered.
    - Ensure the main keyword is naturally integrated into the first paragraph.
 
-3. **Main Sections (H2)**
+3. **Main Sections**
    - Break down the main aspects or angles of the topic into 3-5 sections.
    - Each section should focus on a specific subtopic, providing key points, facts, or examples.
    - Suggest where to include the main and related keywords to optimize for SEO without making the content repetitive.
 
-4. **Subsections (H3)**
+4. **Subsections**
    - Further divide complex topics or sections into manageable parts.
    - Offer guidance on specific details, case studies, or expert opinions to include.
 
