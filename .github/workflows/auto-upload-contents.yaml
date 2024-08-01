@@ -58,21 +58,22 @@ jobs:
           source $VENV
           export PYTHONPATH=$PYTHONPATH:${{ github.workspace }}
           if [ "${{ github.event_name }}" = "schedule" ]; then
-            python scripts/generate_content.py \
-              --n-content ${{ vars.SCHEDULED_POST_COUNT || 5 }} \
-              --topic "${{ vars.SCHEDULED_POST_TOPIC || 'Free Topic' }} \
-              --provider "${{ github.event.inputs.provider }}
-              "
+            n_content="${{ vars.SCHEDULED_POST_COUNT || 5 }}"
+            topic="${{ vars.SCHEDULED_POST_TOPIC || 'Free Topic' }}"
+            provider="${{ vars.LANGUAGE_MODEL_PROVIDER || 'mistral' }}"
           else
-            python scripts/generate_content.py \
-              --n-content ${{ github.event.inputs.n_content }} \
-              --topic "${{ github.event.inputs.topic }} \
-              --provider "${{ github.event.inputs.provider }}
-              "
+            n_content="${{ github.event.inputs.n_content }}"
+            topic="${{ github.event.inputs.topic }}"
+            provider="${{ github.event.inputs.provider }}"
           fi
+          python scripts/generate_content.py \
+            --n-content "$n_content" \
+            --topic "$topic" \
+            --provider "$provider"
         env:
           VENV: ${{ github.workspace }}/.venv/bin/activate
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           LANGCHAIN_TRACING_V2: ${{ github.event.inputs.enable_langchain_tracing }}
           LANGCHAIN_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
 
