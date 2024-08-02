@@ -151,11 +151,13 @@ alt: "Thumbnail for {meta["meta"]["title"]}"
         raise
 
 
-def generate_single_content(model: BaseChatModel, topic: str) -> None:
+def generate_single_content(
+    high_temperature_model: BaseChatModel, low_temperature_model: BaseChatModel, topic: str
+) -> None:
     try:
-        outline = generate_outline(model, topic)
-        content = generate_content(model, outline)
-        meta = generate_meta(model, outline)
+        outline = generate_outline(high_temperature_model, topic)
+        content = generate_content(low_temperature_model, outline)
+        meta = generate_meta(low_temperature_model, outline)
         create_markdown_file(content, meta)
     except Exception as e:
         logger.error(f"Error in content generation pipeline: {e}")
@@ -166,12 +168,12 @@ class Provider(StrEnum):
     mistral = "mistral"
 
 
-def get_chat_model(provider: Provider) -> BaseChatModel:
+def get_chat_model(provider: Provider, temperature: float = 0.8) -> BaseChatModel:
     match provider:
         case Provider.openai:
-            return ChatOpenAI(model="gpt-4o-mini", temperature=0.8)
+            return ChatOpenAI(model="gpt-4o-mini", temperature=temperature)
         case Provider.mistral:
-            return ChatMistralAI(model_name="open-mixtral-8x7b", temperature=0.8)
+            return ChatMistralAI(model_name="open-mixtral-8x7b", temperature=temperature)
 
 
 @app.command()
@@ -182,11 +184,12 @@ def main(
     topic: str = typer.Option("free topic", "--topic", "-t", help="Topic for content generation"),
     provider: Annotated[Provider, typer.Option(case_sensitive=False)] = Provider.mistral,
 ) -> None:
-    model = get_chat_model(provider)
+    high_temperature_model = get_chat_model(provider, temperature=1.3)
+    low_temperature_model = get_chat_model(provider, temperature=0.6)
 
     for i in range(n_content):
         logger.info(f"Generating content {i + 1} of {n_content}...")
-        generate_single_content(model, topic)
+        generate_single_content(high_temperature_model, low_temperature_model, topic)
 
     logger.info("Content generation complete.")
 
