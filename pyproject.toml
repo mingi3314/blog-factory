@@ -15,6 +15,7 @@ langchain-mistralai = "^0.1.10"
 typer = "^0.12.3"
 langchain-openai = "^0.1.19"
 python-dotenv = "^1.0.1"
+beautifulsoup4 = "^4.12.3"
 
 
 [tool.poetry.group.dev.dependencies]
