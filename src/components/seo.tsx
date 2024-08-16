@@ -122,6 +122,10 @@ const SEO: React.FC<SEOProperties> = ({
             content: "website",
           },
           {
+            name: "og:url",
+            content: `${site.siteUrl}${slug}`,
+          },
+          {
             name: "twitter:card",
             content: "summary",
           },
